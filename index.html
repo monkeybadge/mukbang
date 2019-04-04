@@ -18,10 +18,7 @@
         }
     
     </style>
-    
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-<script>
- 
+        
 <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -34,7 +31,7 @@
     messagingSenderId: "372543879678"
   };
   firebase.initializeApp(config);
-
+    
         // Check to see if you are logged in
         firebase.auth().onAuthStateChanged(function(user) {
             if (user == null) {
