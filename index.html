@@ -560,7 +560,7 @@ button[class*="btn"] {border: 0;}
                     var date = new Date(data[u][t].time);
                     var time = date.toString();
                     if (data[u][t].img != "") {
-                        mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' + height='40px'></td>";
+                        mytab = mytab + "<td><img src='" + users[u].profile_picture + "' class='avatar' + height='40px'></td>";
                         mytab = mytab + "<td>" + users[u].email + "</td>";
                         mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
                         mytab = mytab + "<td>" + time + "<br><img src='" + data[u][t].img + "' width='75px'></td>";
