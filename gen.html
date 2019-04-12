@@ -559,17 +559,19 @@ button[class*="btn"] {border: 0;}
                     mytab = mytab + "<tr>";
                     var date = new Date(data[u][t].time);
                     var time = date.toString();
-                    if (data[u][t].img != "") {
-                        mytab = mytab + "<td><img src='" + users[u].profile_picture + "' class='avatar' + height='40px'></td>";
-                        mytab = mytab + "<td>" + users[u].email + "</td>";
-                        mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
-                        mytab = mytab + "<td>" + time + "<br><img src='" + data[u][t].img + "' width='75px'></td>";
-                    } else {
-                        mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' + border-style: solid></td>";
-                        mytab = mytab + "<td>" + users[u].email + "</td>";
-                        mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
-                        mytab = mytab + "<td>" + time + "</td>";
-                        
+                    
+                    if(data[u][t].local == "gen"){
+                       if (data[u][t].img != "") {
+                            mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' + height='40px'></td>";
+                            mytab = mytab + "<td>" + users[u].email + "</td>";
+                            mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
+                            mytab = mytab + "<td>" + time + "<br><img src='" + data[u][t].img + "' width='75px'></td>";
+                        } else {
+                            mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' + border-style: solid></td>";
+                            mytab = mytab + "<td>" + users[u].email + "</td>";
+                            mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
+                            mytab = mytab + "<td>" + time + "</td>";
+                        }
                         
                     } 
                     mytab = mytab + "</tr>";
@@ -590,7 +592,7 @@ button[class*="btn"] {border: 0;}
             var nameValue = twitdoc.value;
             var imgValue = twitimg.innerHTML;
             var js_time = Date.now();
-            var tweetid = firebase.database().ref('tweets/' + userId + "/").push({tweet: nameValue, time: js_time, img: imgValue});
+            var tweetid = firebase.database().ref('tweets/' + userId + "/").push({tweet: nameValue, time: js_time, img: imgValue, local: "gen"});
             twitdoc.value = "";
             console.log("tweet written")
             
@@ -663,11 +665,7 @@ function closeNav() {
         
         <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-<<<<<<< HEAD
   <a href="TOS.html"><h2>Terms of Service</h2></a>
-=======
-  <a href="tos.html"><h2>Tos</h2></a>
->>>>>>> bc8c32a21460ad5461a8e111df672a6f97775faa
   <a href="AboutUsPage.html"><h2>Team</h2></a>
   <a href="HowToPlay.html"><h2>How to Use</h2></a>
 </div>
