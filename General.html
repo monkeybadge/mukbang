@@ -480,7 +480,7 @@ button[class*="btn"] {border: 0;}
     
         // Check to see if you are logged in
         firebase.auth().onAuthStateChanged(function(user) {
-            if (user == null) {
+             if (user == null) {
                 alert("Not logged in.");
                 return;
             } else {
@@ -575,6 +575,7 @@ button[class*="btn"] {border: 0;}
                     mytab = mytab + "</tr>";
                 }   
             }
+            
             //mylist = mylist + "</ul>";
             mytab = mytab + "</table>"
             var mytdiv = document.getElementById("mytweets");
@@ -666,10 +667,10 @@ function closeNav() {
 
   <a href="TOS.html"><h2>Terms of Service</h2></a>
 
-  <a href="tos.html"><h2>Tos</h2></a>
+  <a href="General.html"><h2>General Page</h2></a>
 
   <a href="AboutUsPage.html"><h2>Team</h2></a>
-  <a href="Homepage.html"><h2>Homepage</h2></a>
+  <a href="index.html"><h2>Homepage</h2></a>
     
 </div>
 
