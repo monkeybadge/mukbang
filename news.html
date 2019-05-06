@@ -250,6 +250,12 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </footer>
  
 <script>
+    
+    
+  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    
 // Accordion
 function myFunction(id) {
   var x = document.getElementById(id);
@@ -263,7 +269,31 @@ function myFunction(id) {
   }
 }
 
-// Used to toggle the menu on smaller screens when clicking on the menu button
+ for (var u in data) {
+                for (var t in data[u]) {
+                    mytab = mytab + "<tr>";
+                    var date = new Date(data[u][t].time);
+                    var time = date.toString();
+                   if(data[u][t].local == "biz"){ 
+                   if (data[u][t].img != null && data[u][t].img != "") {
+                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        mytab = mytab + "<td><img class = 'zoom' src='" + data[u][t].img + "' width=200px' ></td>";
+                        mytab = mytab + "<td>"+ time + "</td>";
+                    } else if (data[u][t].vid != null && data[u][t].vid != ""){
+                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        /*mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";*/
+                        mytab = mytab + "<td class = 'txtbox width = 100%'> <iframe width=' 'src='" + data[u][t].vid + "'frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe> <br>" + data[u][t].tweet + "</td>";
+                        mytab = mytab + "<td>" + time + "</td>";   
+                        
+                    } else{
+                         mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";
+                        mytab = mytab + "<td>" + time + "</td>";
+                    }
+                   }
+                    mytab = mytab + "</tr>";
+                }   
+            }
 function openNav() {
   var x = document.getElementById("navDemo");
   if (x.className.indexOf("w3-show") == -1) {
@@ -272,6 +302,21 @@ function openNav() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+    
+ function signin() {
+            console.log("Signing in");
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider).then(function(result) { 
+                window.location.replace("fbtest.html");
+            });
+        }
+        
+       function signout() {
+            console.log("Signing out");
+            firebase.auth().signOut().then(function() {
+            });
+        }
+
 </script>
 
 </body>
