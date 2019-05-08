@@ -1,0 +1,962 @@
+
+<html>
+    
+    
+    
+<h1><center>mukbang</center></h1> 
+<h3><center>Business</center></h3>
+    
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    
+    
+    
+    <style>
+        
+        #photourl{
+            
+            width: 
+        }
+        
+       <span style="font-family:Arial">tex</span> 
+        
+
+ .avatar {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 0px;
+
+}
+
+.avatar:hover {
+    filter: brightness(0.5);
+}
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+        
+        .close1:hover,
+.close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+} 
+  #post:hover{
+    filter:brightness(0.5);
+}
+ * {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #eaedf1;
+    font-family: 'Lato', sans-serif;
+}
+.header {
+    background: white;
+    padding: 30px;
+    text-align: center;
+}
+.header h1 {
+    font-weight: 300;
+    display: inline;
+}
+h2 {
+    color: #89867e;
+    text-align: center;
+    font-weight: 300;
+}
+.color {
+    width: 350px;
+    margin: 0 auto;
+}
+.color li {
+    margin: 0 15px 0 0;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 100%;
+}
+.color .red    {background: #fa5a5a;}
+.color .yellow {background: #f0d264;}
+.color .green  {background: #82c8a0;}
+.color .cyan   {background: #7fccde;}
+.color .blue   {background: #6698cb;}
+.color .purple {background: #cb99c5;}
+
+.content, 
+.content-gradient, 
+.content-3d {
+  margin: 40px auto;
+}
+.content {
+  width: 80%;
+  max-width: 700px;
+}
+.content-3d {
+  width: 50%;
+  max-width: 300px;
+}
+pre {
+    width: 100%;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.72);
+    color: #f8f8f2;
+    border-radius: 0 0 4px 4px;
+    margin-top: 20px;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+pre .bt  {color: #f8f8f2;} /* <> */
+pre .anc {color: #f92672;} /* anchor tag */
+pre .att {color: #a6a926;} /* attribute */
+pre .val {color: #e6db74;} /* value */
+
+.btn-container, .container {
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.container h2 {
+    padding-top: 30px;
+    font-weight: 300;
+}
+.btn, .btn-two {
+    margin: 9px;
+}
+.btn-gradient {
+    margin: 5px;
+}
+a[class*="btn"] {text-decoration: none;}
+input[class*="btn"], 
+button[class*="btn"] {border: 0;}
+
+/* Here you can change the button sizes */
+.btn.large, 
+.btn-two.large, 
+.btn-effect.large {
+  padding: 20px 40px; 
+  font-size: 22px;
+}
+.btn.small, 
+.btn-two.small, 
+.btn-gradient.small, 
+.btn-effect.small {
+  padding: 8px 18px;  
+  font-size: 14px;
+}
+.btn.mini, 
+.btn-two.mini, 
+.btn-gradient.mini, 
+.btn-effect.mini {
+  padding: 4px 12px;  
+  font-size: 12px;
+}
+.btn.block, 
+.btn-two.block, 
+.btn-gradient.block, 
+.btn-effect.block {
+  display: block;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.btn-gradient.large {
+  padding: 15px 45px; 
+  font-size: 22px;
+}
+
+/* Colors for .btn and .btn-two */
+.btn.blue, .btn-two.blue     {background-color: #7fb1bf;}
+.btn.green, .btn-two.green   {background-color: #9abf7f;}
+.btn.red, .btn-two.red       {background-color: #fa5a5a;}
+.btn.purple, .btn-two.purple {background-color: #cb99c5;}
+.btn.cyan, .btn-two.cyan     {background-color: #7fccde;}
+.btn.yellow, .btn-two.yellow {background-color: #f0d264;}
+
+.rounded {
+  border-radius: 10px;
+}
+
+/* default button style */
+.btn {
+    position: relative;
+    border: 0;
+    padding: 15px 25px;
+    display: inline-block;
+    text-align: center;
+    color: white;
+}
+.btn:active {
+    top: 4px;   
+}
+
+/* color classes for .btn */
+.btn.blue {box-shadow: 0px 4px #74a3b0;}
+.btn.blue:active {box-shadow: 0 0 #74a3b0; background-color: #709CA8;}
+
+.btn.green {box-shadow: 0px 4px 0px #87a86f;}
+.btn.green:active {box-shadow: 0 0 #87a86f; background-color: #87a86f;}
+
+.btn.red {box-shadow:0px 4px 0px #E04342;}
+.btn.red:active {box-shadow: 0 0 #ff4c4b; background-color: #ff4c4b;}
+
+.btn.purple {box-shadow:0px 4px 0px #AD83A8;}
+.btn.purple:active {box-shadow: 0 0 #BA8CB5; background-color: #BA8CB5;}
+
+.btn.cyan {box-shadow:0px 4px 0px #73B9C9;}
+.btn.cyan:active {box-shadow: 0 0 #73B9C9; background-color: #70B4C4;}
+
+.btn.yellow {box-shadow:0px 4px 0px #D1B757;}
+.btn.yellow:active {box-shadow: 0 0 #ff4c4b; background-color: #D6BB59;}
+
+/* Button two - I have no creativity for names */
+.btn-two {
+    color: white;   
+    padding: 15px 25px;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom-color: rgba(0,0,0,0.34);
+    text-shadow:0 1px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+                      0 2px 0 -1px rgba(0,0,0,0.13), 
+                      0 3px 0 -1px rgba(0,0,0,0.08), 
+                      0 3px 13px -1px rgba(0,0,0,0.21);
+}
+.btn-two:active {
+    top: 1px;
+    border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
+    position: relative;
+}
+/* 3D Button */
+.btn-3d {
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    padding: 20px 60px;
+    color: white;
+    margin: 20px 10px 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+.btn-3d.red:hover    {background-color: #e74c3c;}
+.btn-3d.blue:hover   {background-color: #699DD1;}
+.btn-3d.green:hover  {background-color: #80C49D;}
+.btn-3d.purple:hover {background-color: #D19ECB;}
+.btn-3d.yellow:hover {background-color: #F0D264;}
+.btn-3d.cyan:hover   {background-color: #82D1E3;}
+
+.btn-3d:active {
+    top: 9px;
+}
+
+/* 3D button colors */
+.btn-3d.red {
+    background-color: #e74c3c;
+    box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 8px 0 0 #C24032,
+        0 8px 0 1px rgba(0,0,0,0.4),
+                0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.red:active {
+    box-shadow: 0 0 0 1px #c63702 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+.btn-3d.blue {
+    background-color: #6DA2D9;
+    box-shadow: 0 0 0 1px #6698cb inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 8px 0 0 rgba(110, 164, 219, .7),
+                0 8px 0 1px rgba(0,0,0,.4),
+                0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.blue:active {
+    box-shadow: 0 0 0 1px #6191C2 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+.btn-3d.green {
+    background-color: #82c8a0;
+    box-shadow: 0 0 0 1px #82c8a0 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 8px 0 0 rgba(126, 194, 155, .7),
+                0 8px 0 1px rgba(0,0,0,.4),
+                0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.green:active {
+    box-shadow: 0 0 0 1px #82c8a0 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+.btn-3d.purple {
+    background-color: #cb99c5;
+    box-shadow: 0 0 0 1px #cb99c5 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 8px 0 0 rgba(189, 142, 183, .7),
+                0 8px 0 1px rgba(0,0,0,.4),
+                0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.purple:active {
+    box-shadow: 0 0 0 1px #cb99c5 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+.btn-3d.cyan {
+    background-color: #7fccde;
+    box-shadow: 0 0 0 1px #7fccde inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 8px 0 0 rgba(102, 164, 178, .6),
+                0 8px 0 1px rgba(0,0,0,.4),
+                0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.cyan:active {
+    box-shadow: 0 0 0 1px #7fccde inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+.btn-3d.yellow {
+    background-color: #F0D264;
+    box-shadow: 0 0 0 1px #F0D264 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 8px 0 0 rgba(196, 172, 83, .7),
+                0 8px 0 1px rgba(0,0,0,.4),
+                0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.yellow:active {
+    box-shadow: 0 0 0 1px #F0D264 inset,
+                0 0 0 2px rgba(255,255,255,0.15) inset,
+                0 0 0 1px rgba(0,0,0,0.4);
+}
+
+/* Gradient buttons */
+.btn-gradient {
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+/* Gradient - ugly css is ugly */
+.btn-gradient.cyan {
+    background: rgba(27,188,194,1);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27,188,194,1)), to(rgba(24,163,168,1)));
+    background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+}
+
+.btn-gradient.red{ 
+    background: rgba(250,90,90,1);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(250,90,90,1)), to(rgba(232,81,81,1)));
+    background: -webkit-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+    background: -moz-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+    background: -o-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+    background: linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa5a5a', endColorstr='#e85151', GradientType=0 );
+}
+.btn-gradient.orange {
+    background: rgba(255,105,30,1);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,105,30,1)), to(rgba(230,95,28,1)));
+    background: -webkit-linear-gradient(rgba(255,105,30,1) 0%, rgba(230,95,28,1) 100%);
+    background: -moz-linear-gradient(rgba(255,105,30,1) 0%, rgba(230,95,28,1) 100%);
+    background: -o-linear-gradient(rgba(255,105,30,1) 0%, rgba(230,95,28,1) 100%);
+    background: linear-gradient(rgba(255,105,30,1) 0%, rgba(230,95,28,1) 100%);
+}
+.btn-gradient.blue {
+    background: rgba(102,152,203,1);
+    background: -moz-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(102,152,203,1)), color-stop(100%, rgba(92,138,184,1)));
+    background: -webkit-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
+    background: -o-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
+    background: -ms-linear-gradient(top, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
+    background: linear-gradient(to bottom, rgba(102,152,203,1) 0%, rgba(92,138,184,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6698cb', endColorstr='#5c8ab8', GradientType=0 );
+}
+.btn-gradient.purple { 
+    background: rgba(203,153,197,1);
+    background: -moz-linear-gradient(top, rgba(203,153,197,1) 0%, rgba(181,134,176,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(203,153,197,1)), color-stop(100%, rgba(181,134,176,1)));
+    background: -webkit-linear-gradient(top, rgba(203,153,197,1) 0%, rgba(181,134,176,1) 100%);
+    background: -o-linear-gradient(top, rgba(203,153,197,1) 0%, rgba(181,134,176,1) 100%);
+    background: -ms-linear-gradient(top, rgba(203,153,197,1) 0%, rgba(181,134,176,1) 100%);
+    background: linear-gradient(to bottom, rgba(203,153,197,1) 0%, rgba(181,134,176,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb99c5', endColorstr='#b586b0', GradientType=0 );
+}
+.btn-gradient.yellow {
+    background: rgba(240,210,100,1);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(240,210,100,1)), to(rgba(229,201,96,1)));
+    background: -webkit-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
+    background: -moz-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
+    background: -o-linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
+    background: linear-gradient(rgba(240,210,100,1) 0%, rgba(229,201,96,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
+}
+.btn-gradient.green {
+    background: rgba(130,200,160,1);
+    background: -moz-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(130,200,160,1)), color-stop(100%, rgba(130,199,158,1)));
+    background: -webkit-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+    background: -o-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+    background: -ms-linear-gradient(top, rgba(130,200,160,1) 0%, rgba(130,199,158,1) 100%);
+    background: linear-gradient(to bottom, rgba(130,200,160,1) 0%, rgba(124, 185, 149, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82c8a0', endColorstr='#82c79e', GradientType=0 );
+}
+
+.btn-gradient.red:active      {background: #E35252;}
+.btn-gradient.orange:active {background: #E8601B;}
+.btn-gradient.cyan:active   {background: #169499;}
+.btn-gradient.blue:active   {background: #608FBF;}
+.btn-gradient.purple:active {background: #BD8EB7;}
+.btn-gradient.yellow:active {background: #DBC05B;}
+.btn-gradient.green:active  {background: #72B08E;}
+        
+       
+    .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: skyblue;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 200px;
+}
+
+.sidenav a {
+  padding: 10px 8px 8px 50px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 1080px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+    
+    body{
+        margin-left:30px;
+        font-family:Verdana;
+    }   
+    .txtbox{
+        width:50%;
+
+    
+    }
+    form{
+        background-color: white;
+        width:625px;
+        padding:10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        /*z-index: -1;
+        position: relative;*/
+        
+
+        
+    }
+    form{
+        margin-top:-5px;
+        padding-top:15px;
+        margin-bottom:60px;
+    }
+    h4{
+        font-weight: 500;
+        font-size:20;
+        background-color: #FFA07A;
+        color:white;
+        padding:15px;
+        margin:0px;
+                width:615px;
+        z-index: 1;
+        position: relative;
+         border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+    }
+    #mytweets{
+        margin-top:50px;
+        margin-left:10px;
+        
+    }
+    #post{
+         background-color: #FFA07A;
+          border: none;
+          color: white;
+          height:50px;
+          width:150px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 25px;
+        border-radius: 12px;
+    }
+    #post:hover{
+    filter:brightness(0.5);
+}
+    #title{
+        font-size:30;
+        font-style:italic;
+    }
+
+banner{
+    height: 90px;
+    background:white;
+    width:100%;
+    top:0px;
+    color:white;
+    font-size: 150%;
+    left:0px;
+    position: relative;
+
+    
+    
+
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color : black;
+}
+.modal-content1 {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color : black;
+
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile{
+background-color: 	#FFA07A;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  width:80px;
+  height: 55px;
+  left:60%;
+  top:-25px;
+    text-align: center;
+    
+}
+
+.profile:hover{
+    filter:brightness(0.5);
+}
+    html{
+    background-color:F2F2F2;
+    margin:0;
+    padding:0;
+    height:1000px;
+}
+    .button1{border-radius: 12px;}
+
+banner{
+    height: 90px;
+    background:white;
+    width:100%;
+    z-index: 10;
+    position: fixed;
+    top:0px;
+    color:white;
+    font-size: 150%;
+    left:0px;
+    
+    
+
+}
+#logo{
+    margin-top:14px;
+    
+}
+body{
+    
+    top:100px;
+    position:relative;
+}
+    td{
+        height:75px;
+    }
+
+.avatar {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 0px;
+
+}
+
+.avatar:hover {
+    filter: brightness(0.5);
+}
+.zoom {
+  transition: transform .25s; /* Animation */
+  background-color: white;
+    border-radius: 15px
+}
+    
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.txtbox {
+    padding: 5px;
+    background-color:white;
+    align-content: center;
+    border-radius: 15px;
+    font-size:20;
+}
+
+
+.close1 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.game{
+background-color: 	#FFA07A;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  width:80px;
+  height: 55px;
+  left:60%;
+  top:-25px;
+    text-align: center;
+    
+}
+
+.game:hover{
+    filter:brightness(0.5);
+}
+    html{
+    background-color:F2F2F2;
+    margin:0;
+    padding:0;
+}
+
+    a{
+        text-decoration: none;
+        color:#FFA07A;
+        font-size:20;
+    }
+</style>
+
+        
+        
+        
+        
+    </style>
+        
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyATVwUe0v8F2V1zPaDbrLdbYl3I8dr6kNg",
+    authDomain: "mukbang-a3f89.firebaseapp.com",
+    databaseURL: "https://mukbang-a3f89.firebaseio.com",
+    projectId: "mukbang-a3f89",
+    storageBucket: "mukbang-a3f89.appspot.com",
+    messagingSenderId: "372543879678"
+  };
+  firebase.initializeApp(config);
+    
+        // Check to see if you are logged in
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user == null) {
+                alert("Not logged in.");
+                return;
+            } else {
+                userId = user.uid;
+                name = user.displayName;
+                imageUrl = user.photoURL;
+                
+                email = user.email;
+                    
+                // write user data to users
+                writeUserData(userId, name, email, imageUrl);
+                
+                // write data to document
+                mydiv = document.getElementById("mydata");
+                mydiv.innerHTML = name
+                myphotodiv = document.getElementById("myphoto");
+                myphotodiv.innerHTML = "<img src='" + imageUrl + "' width = 50px;/>";
+
+                firebase.database().ref('/tweets').once('value').then(function(snapshot) {
+                    var data = (snapshot.val());
+                    if (data == null) {
+                      console.log("No data found at /tweets/" + userId);  
+                    } else {
+                        
+                      firebase.database().ref('/users').once('value').then(function(snapshot) { 
+                        var userdata = (snapshot.val());
+                        if (userdata != null) {
+                           dataarray = [data,userdata]
+                           console.log(dataarray)
+                           updatetweets(dataarray); 
+                        }
+                      });
+                      //console.log(data)
+                      //updatetweets(data);
+                    }
+                });
+            } // end user null check
+        }); // end check auth state
+        
+        function encodeImageFileAsURL() {
+
+            var filesSelected = document.getElementById("inputFileToLoad").files;
+            if (filesSelected.length > 0) {
+                var fileToLoad = filesSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoadedEvent) {
+                    var srcData = fileLoadedEvent.target.result; // <--- data: base64
+                    //var newImage = document.createElement('img');
+                    //newImage.src = srcData;
+                    //document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+                    document.getElementById("imgTest").innerHTML = srcData;
+                    //console.log("Converted Base64 version is: " + document.getElementById("imgTest").innerHTML);
+                    console.log(srcData);
+                }
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        } // end function
+        
+        // write user data
+        function writeUserData(userId, name, email, imageUrl) {
+            firebase.database().ref('users/' + userId).set({
+                username: name,
+                email: email,
+                profile_picture : imageUrl 
+            });
+        }
+        
+        function updatetweets(data) {
+            //var mylist = "<ul>";
+            var mytab = "<table>";
+            users = data[1]; // put on top, because changed data - not good coding change later
+            data = data[0];
+            
+            
+        
+            for (var u in data) {
+                for (var t in data[u]) {
+                    mytab = mytab + "<tr>";
+                    var date = new Date(data[u][t].time);
+                    var time = date.toString();
+                   if(data[u][t].local == "biz"){ 
+                   if (data[u][t].img != null && data[u][t].img != "") {
+                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        mytab = mytab + "<td><img class = 'zoom' src='" + data[u][t].img + "' width=200px' ></td>";
+                        mytab = mytab + "<td>"+ time + "</td>";
+                    } else if (data[u][t].vid != null && data[u][t].vid != ""){
+                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        /*mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";*/
+                        mytab = mytab + "<td class = 'txtbox width = 100%'> <iframe width=' 'src='" + data[u][t].vid + "'frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe> <br>" + data[u][t].tweet + "</td>";
+                        mytab = mytab + "<td>" + time + "</td>";   
+                        
+                    } else{
+                         mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";
+                        mytab = mytab + "<td>" + time + "</td>";
+                    }
+                   }
+                    mytab = mytab + "</tr>";
+                }   
+            }
+            //mylist = mylist + "</ul>";
+            mytab = mytab + "</table>"
+            var mytdiv = document.getElementById("mytweets");
+            //mytdiv.innerHTML = mylist;
+            mytdiv.innerHTML = mytab;
+        }
+        
+        // write tweets to firebase
+        function tweet() {
+            
+            var twitdoc = document.getElementById("twit");
+            var twitimg = document.getElementById("imgTest");
+            var nameValue = twitdoc.value;
+            var imgValue = twitimg.innerHTML;
+            var js_time = Date.now();
+            var tweetid = firebase.database().ref('tweets/' + userId + "/").push({tweet: nameValue, time: js_time, img: imgValue, local: "biz"});
+            twitdoc.value = "";
+            console.log("tweet written")
+            
+            firebase.database().ref('/tweets').once('value').then(function(snapshot) {
+                    var data = (snapshot.val());
+                    if (data == null) {
+                      console.log("No data found at /tweets/" + userId);  
+                    } else { 
+                        firebase.database().ref('/users').once('value').then(function(snapshot) { 
+                        var userdata = (snapshot.val());
+                        if (userdata != null) {
+                           dataarray = [data,userdata]
+                           console.log(dataarray)
+                           updatetweets(dataarray); 
+                        }
+                      });
+                    }
+                });
+            
+            
+            
+            // The unique key stored in tweetid is based on a timestamp, so list items will automatically be ordered chronologically. Because Firebase generates a unique key for each tweet, no write conflicts will occur if multiple users add a post at the same time. https://firebase.google.com/docs/database/admin/save-data
+            
+        }
+        
+        function signin() {
+            console.log("Signing in");
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider).then(function(result) { 
+                window.location.replace("fbtest.html");
+            });
+        }
+        
+        function signout() {
+            console.log("Signing out");
+            firebase.auth().signOut().then(function() {
+            });
+        }
+
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}  
+
+    
+    </script>
+
+    <body>
+    <center>
+        
+      <form>
+       
+            <textarea id="twit" type="text" name="thetweet" cols="100" rows="4"></textarea>
+       
+        <br>
+       
+         <br>Image:
+        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+        <div id="imgTest" style="display:none;"></div>
+        
+       Video:
+        <input id="vidFileID" type="text"/>
+        <div id="vidTest" style="display:none;"></div>
+        <br>   <br>
+            
+ 
+         </form>
+        <button class="btn-gradient red mini" onclick="signin()">Sign in</button>
+        <button class="btn-gradient red mini" onclick="signout()">Sign out</button>
+    
+     
+        <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
+    
+       
+        
+        
+        
+    <div id="imgTest" style="display:none;"></div>   
+    <div  id="mytweets"></div>
+    <div id="mydata"></div>
+    <div id="myphoto" width = 50px></div>
+        
+        <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="tos.html"><h2>Terms of Service</h2></a>
+  <a href="AboutUsPage.html"><h2>Team</h2></a>
+  <a href="General.html"><h2>General</h2></a>
+<a href="index.html"><h2>Homepage1</h2></a>
+</div>
+
+
+<span style= "font-size:75px;cursor:pointer;position:absolute;left: 75; position:absolute;margin-right:50 absolute;top: 25" a onclick="openNav()">&#9776;</span>
+        
+        
+        </center>
+    </body>
+
+    
+
+    
+</html>
