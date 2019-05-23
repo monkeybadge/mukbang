@@ -1,2 +1,2 @@
 # mukbang
-https://monkeybadge.github.io/mukbang/index.html
+https://monkeybadge.github.io/mukbang/R/index.html
