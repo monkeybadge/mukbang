@@ -519,23 +519,7 @@ button[class*="btn"] {border: 0;}
                 });
             } // end user null check
         }); // end check auth state
-    
-    
-        firebase.database().ref('/').once('value').then(function(snapshot) {
-                    var all = snapshot.val();
-                    console.log(snapshot.val());
-                    dataarray = [all['tweets'],all['users'],all['likes']];
-            
-                    console.log(dataarray);
-                    updatetweets(dataarray);                                           
-                                        
-                });
-            } // end user null check
-        }); // end check auth state
-    
-    
-    
-    
+        
         function encodeImageFileAsURL() {
 
             var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -563,50 +547,35 @@ button[class*="btn"] {border: 0;}
                 profile_picture : imageUrl 
             });
         }
-    
-    
-    
-    
         
-         function updatetweets(data) {
+        function updatetweets(data) {
             //var mylist = "<ul>";
             var mytab = "<table>";
-            likes = data[2];
             users = data[1]; // put on top, because changed data - not good coding change later
             data = data[0];
             
-            count = 0;
             for (var u in data) {
                 for (var t in data[u]) {
                     mytab = mytab + "<tr>";
                     var date = new Date(data[u][t].time);
-                    var time1 = date.toString();
-                    var time = time1.substr(4, [11]);
-                    if (likes[u] != undefined || likes[u] != null){
-                        if (likes[u][t] != undefined){
-                            var keys = Object.keys(likes[u][t]);
-                            var likecount = keys.length;
+                    var time = date.toString();
+                    
+                    if(data[u][t].local == "sp"){
+                       if (data[u][t].img != "") {
+                            mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' class = 'avatar'></td>";
+                            mytab = mytab + "<td>" + users[u].email + "</td>";
+                            mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
+                            mytab = mytab + "<td>" + time + "<br><img src='" + data[u][t].img + "' width='75px'></td>";
+                        } else {
+                            mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' + border-style: solid></td>";
+                            mytab = mytab + "<td>" + users[u].email + "</td>";
+                            mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
+                            mytab = mytab + "<td>" + time + "</td>";
                         }
-                    } else {
-                        likecount = 0;
-                    }
-                    if (data[u][t].img != "") {
-                        mytab = mytab + "<td><img id='avatar' class = 'zoom' src='" + users[u].profile_picture2 + "' width='50px'></td>";
-                        mytab = mytab + "<td>" + users[u].username2 + " (" + users[u].username + ")" + "</td>";
-                        mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
-                        mytab = mytab + "<td>" + time + "<br><img src='" + data[u][t].img + "' width='300px'></td>";
-                        mytab = mytab + "<td><button id='like" + count + "' onclick=like(" + count + ",'" +u +"','"+t+"')>" + likecount + "</button></td>";
-                    } else {
-                        mytab = mytab + "<td><img id='avatar' class = 'zoom' src='" + users[u].profile_picture2 + "' width='50px'></td>";
-                        mytab = mytab + "<td>" + users[u].username2 + " (" + users[u].username + ")" + "</td>";
-                        mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
-                        mytab = mytab + "<td>" + time + "</td>";
-                        mytab = mytab + "<td><button id='like" + count + "' onclick=like(" + count + ",'" +u +"','"+t+"')>" + likecount + "</button></td>";
+                        
                     } 
                     mytab = mytab + "</tr>";
-                    count = count + 1;
-                    likecount=0;   
-                }  
+                }   
             }
             //mylist = mylist + "</ul>";
             mytab = mytab + "</table>"
@@ -614,34 +583,6 @@ button[class*="btn"] {border: 0;}
             //mytdiv.innerHTML = mylist;
             mytdiv.innerHTML = mytab;
         }
-        
-        function like(count, u, t){
-            myc = document.getElementById('like' + count).innerHTML;
-            //document.getElementById('like' + 'count').innerHTML= +1;
-            myc = parseInt(myc) +1;
-            document.getElementById('like' + count).innerHTML = myc;
-            document.getElementById('like'  + count).disabled = true;
-            console.log(userId + " " + u);
-            refline = "/likes/" + u + "/" + t + "/";
-            firebase.database().ref(refline).push({who: userId});
-            
-        }
-        
-        
-        if(value="small") {
-            
-            
-            
-        } else if(value="medium") {
-            
-            
-            
-        } else {
-            
-            
-            
-        }
-        
         
         // write tweets to firebase
         function tweet() {
