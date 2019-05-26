@@ -16,7 +16,11 @@
     
     <style>
         
-      
+       #pfp{
+            border-radius: 70%;
+            border: 1px solid red;
+            width: 40px;
+        }
          
             
             
@@ -768,7 +772,7 @@ background-color: 	#FFA07A;
                 mydiv = document.getElementById("mydata");
                 mydiv.innerHTML = name
                 myphotodiv = document.getElementById("myphoto");
-                myphotodiv.innerHTML = "<img src='" + imageUrl + "' width = 50px;/>";
+                myphotodiv.innerHTML = "<img id='pfp' src='" + imageUrl + "'/>";
 
                firebase.database().ref('/tweets').once('value').then(function(snapshot) {
                     var data = (snapshot.val());
