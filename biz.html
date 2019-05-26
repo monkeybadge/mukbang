@@ -3,7 +3,7 @@
     
     
     
-<h1><center>mukbang</center></h1> 
+<h1><center>Mukbang</center></h1> 
 <h3><center>Business</center></h3>
     
 
@@ -16,6 +16,11 @@
     
     <style>
         
+      
+         
+            
+            
+        }
         #photourl{
             
             width: 
@@ -23,6 +28,13 @@
         
        <span style="font-family:Arial">tex</span> 
         
+        
+        .twit { 
+        background-color:lightcoral
+        
+        
+        
+        }
 
  .avatar {
   vertical-align: middle;
@@ -758,7 +770,7 @@ background-color: 	#FFA07A;
                 myphotodiv = document.getElementById("myphoto");
                 myphotodiv.innerHTML = "<img src='" + imageUrl + "' width = 50px;/>";
 
-                firebase.database().ref('/tweets').once('value').then(function(snapshot) {
+               firebase.database().ref('/tweets').once('value').then(function(snapshot) {
                     var data = (snapshot.val());
                     if (data == null) {
                       console.log("No data found at /tweets/" + userId);  
@@ -778,7 +790,7 @@ background-color: 	#FFA07A;
                 });
             } // end user null check
         }); // end check auth state
-        
+       
         function encodeImageFileAsURL() {
 
             var filesSelected = document.getElementById("inputFileToLoad").files;
