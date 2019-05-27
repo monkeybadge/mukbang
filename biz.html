@@ -932,7 +932,9 @@ function closeNav() {
         
         <center><button class="btn-gradient red mini" onclick="signin()">Log In</button></center> 
   <center><button class="btn-gradient red mini" onclick="signout()">Log Out</button></center> 
+        <div id="services-wrapper">
       <form>
+          
           
           
           
@@ -943,14 +945,14 @@ function closeNav() {
        
         <br>
        
-         <br>Image:
+         <br><h2>Image:</h2>
         <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
         <div id="imgTest" style="display:none;"></div>
-        
+        <br><h2>Video Link:<h2>
        <center><input placeholder="YouTube Link" class=input id="vidFileID" type="text"/></center>
  
          </form>
-
+        </div>
     
      
         <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
