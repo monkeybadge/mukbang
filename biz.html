@@ -19,6 +19,34 @@
     <style>
         
         
+        table.GeneratedTable {
+            float: left;
+            vertical-align: middle;
+            display: inline-block;
+  width: ;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 1px;
+  border-color: #ff4500;
+  border-style: solid;
+  color: #000000;
+ border-spacing: 15px
+
+}
+
+
+
+table.GeneratedTable thead {
+  background-color: #ff3100;
+}
+        
+        
+        
+        
+        
+        h1 {
+font-size: 80px;
+}
         inform{
             float: center;
            display: inline-block;
@@ -57,7 +85,8 @@
         
         
         .twit { 
-        background-color:lightcoral
+            border-radius: 25px;
+        background-color:darkkhaki
         
         
         
@@ -180,7 +209,7 @@ pre .val {color: #e6db74;} /* value */
 }
 .btn-gradient {
     margin: 5px;
-   float:right;
+   float:left;
 }
 a[class*="btn"] {text-decoration: none;}
 input[class*="btn"], 
@@ -534,6 +563,7 @@ button[class*="btn"] {border: 0;}
     
     }
     form{
+        float: left;
         margin: auto;
         display: inline-block;
      vertical-align: top;
@@ -578,6 +608,9 @@ button[class*="btn"] {border: 0;}
 
     }
     #mytweets{
+        overflow-y:scroll;
+        overflow-x:hidden;
+        height:400px;
         margin-top:50px;
         margin-left:10px;
         
@@ -1027,17 +1060,37 @@ function closeNav() {
   <center><button class="btn-gradient red mini" onclick="signout()">Log Out</button></center> 
         
         
-     <div id="ad">
+     
              
                     
-        <img src="ad.png" alt="ad">
+        <img style="width: 130px; background-color: #999; z-index: 10; position: fixed; right: 20px; top: 75px; height: 400px;" src="ad.png" alt="ad">
+        
+
+        <table class="GeneratedTable">
+  <thead>
+    <tr>
+      <th>Trending</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cell</td>
+    </tr>
+    <tr>
+      <td>Cell</td>
+    </tr>
+    <tr>
+      <td>Cell</td>
+    </tr>
+  </tbody>
+</table>
         
         
       <form>
           
     
        Tweet:<br>
-           <textarea style="align-content:left"id="twit" type="text" name="thetweet" cols="100" rows="4"></textarea>
+           <textarea style="align-content:left border-radius: 25px;"id="twit" type="text" name="thetweet" cols="80" rows="4"></textarea>
             
        
       <br>
@@ -1061,7 +1114,7 @@ function closeNav() {
       <br>  <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
     
        </form>
-        
+       
         
         
     <div id="imgTest" style="display:none;"></div>   
