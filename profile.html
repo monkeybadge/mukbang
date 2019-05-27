@@ -1,0 +1,107 @@
+<html>
+<h1><center>mukbang</center></h1> 
+<p1 id="name">name</p1>
+<br>
+<p1 id="email">email</p1>
+<br>
+<p1 id="username">username</p1>
+<br>
+<p1 id="posts">number of posts</p1>
+<br>
+<img src="" alt="picture" id="img">
+    
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>       
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyATVwUe0v8F2V1zPaDbrLdbYl3I8dr6kNg",
+    authDomain: "mukbang-a3f89.firebaseapp.com",
+    databaseURL: "https://mukbang-a3f89.firebaseio.com",
+    projectId: "mukbang-a3f89",
+    storageBucket: "mukbang-a3f89.appspot.com",
+    messagingSenderId: "372543879678"
+  };
+
+ firebase.initializeApp(config);
+    
+ 
+   
+    
+    
+
+    
+    
+    // Check to see if you are logged in
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user == null) {
+                alert("Not logged in.");
+                return;
+            } else {
+            }
+                
+                var usernumber = window.location.href.split("=")[1];
+                console.log(usernumber);
+
+                    
+                        
+                      firebase.database().ref('/users/' + usernumber + "/email").once('value').then(function(snapshot) { 
+                        var userdata = (snapshot.val());
+                        if (userdata != null) {
+                           var email = userdata;
+                           console.log(userdata);
+                            document.getElementById("email").innerHTML = userdata;
+                        }
+                      });     
+                        
+            
+                      firebase.database().ref('/users/' + usernumber + "/username").once('value').then(function(snapshot) { 
+                        var userdata = (snapshot.val());
+                        if (userdata != null) {
+                           var name = userdata;
+                            console.log(userdata);
+                            document.getElementById("name").innerHTML = userdata;
+                        }
+                     });   
+                     
+            
+                        firebase.database().ref('/users/' + usernumber + "/newname").once('value').then(function(snapshot) { 
+                        var userdata = (snapshot.val());
+                        if (userdata == null) {
+                            document.getElementById("username").innerHTML = "no data";
+                        } else {
+                            var name2 = userdata;
+                            console.log(userdata);
+                            document.getElementById("username").innerHTML = userdata;
+                        }
+                     });   
+                        
+                        firebase.database().ref('/tweets/' + usernumber).once('value').then(function(snapshot) { 
+                            var userdata = (snapshot.val());
+                            if (userdata != null) {
+                            var numposts = Object.keys(userdata).length;
+                            document.getElementById("posts").innerHTML = numposts;
+                            }
+                        });
+                        
+                        firebase.database().ref('/users/' + usernumber + "/profile_picture").once('value').then(function(snapshot) { 
+                            var userdata = (snapshot.val());
+                            if (userdata != null) {
+                            var numposts = Object.keys(userdata).length;
+                            document.getElementById("img").src = userdata;
+                            }
+                        });
+                        
+                   
+    
+           
+        }); // end check auth state
+        
+  
+
+    
+    </script>
+
+
+</html>
