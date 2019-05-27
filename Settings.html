@@ -715,14 +715,14 @@ background-color: 	#FFA07A;
     filter:brightness(0.5);
 }
     html{
-    background-color:F2F2F2;
+    background-color:gainsboro;
     margin:0;
     padding:0;
 }
 
     a{
         text-decoration: none;
-        color:#FFA07A;
+        color:red;
         font-size:20;
     }
     </style>
@@ -913,7 +913,7 @@ background-color: 	#FFA07A;
                             userprof.innerHTML = p;
                             
                             lprof = document.getElementById("left");
-                            var l = "<h3>Email: " + yourEmail + "</h3><h3>Favorite Team/Player: " + yourAge + "</h3><h3>Username: " + yourUsername + "</h3><h3>Favorite Sport: " + yourBio + "</h3>";
+                            var l = "<h3>Email: " + yourEmail + "</h3><h3>Username: " + yourUsername + yourBio + "</h3>";
                             lprof.innerHTML = l; 
                             
 //                            rprof = document.getElementById("right");
@@ -932,23 +932,10 @@ background-color: 	#FFA07A;
             firebase.database().ref('users/' + userId).update({
                 profile_picture2: newPic
             });
-            alert("Successfully Updated Picture");
+            alert("Updated Picture");
         }
         
-        function chgAge() {
-            var newTeam = document.getElementById("newage").value;
-            //alert(document.getElementById("newage").value);
-            if (newTeam.length > 30) {
-                alert("Your bio cannot be longer than 30 characters");
-            } 
-            else {
-                firebase.database().ref('users/' + userId).update({
-                    team: newTeam
-                });
-                alert("Successfully Updated Team/Player"); 
-            }
-            showProf();
-        }
+        
         
         
         
@@ -982,7 +969,7 @@ background-color: 	#FFA07A;
         }
         
         function profile() {
-          location.replace("https://y10-social-media.github.io/sport-report/profile.html")
+          location.replace("https://y10-social-media.github.io/sport-report/Settings.html")
         }
         
         function openProfile(){
