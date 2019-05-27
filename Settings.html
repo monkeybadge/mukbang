@@ -1,9 +1,12 @@
 
 <html>
 
-    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -729,14 +732,18 @@ background-color: 	#FFA07A;
     <script>
         
         // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCLg_5JJfOefA0yaflqKt6NqDIncUrHzbw",
-            authDomain: "test-21ce7.firebaseapp.com",
-            databaseURL: "https://test-21ce7.firebaseio.com",
-            projectId: "test-21ce7",
-            storageBucket: "test-21ce7.appspot.com",
-            messagingSenderId: "741408477305"
-        };
+        // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyATVwUe0v8F2V1zPaDbrLdbYl3I8dr6kNg",
+    authDomain: "mukbang-a3f89.firebaseapp.com",
+    databaseURL: "https://mukbang-a3f89.firebaseio.com",
+    projectId: "mukbang-a3f89",
+    storageBucket: "mukbang-a3f89.appspot.com",
+    messagingSenderId: "372543879678",
+    appId: "1:372543879678:web:b325e9c88bc4e1ec"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
         
 
 
