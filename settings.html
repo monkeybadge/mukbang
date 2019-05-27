@@ -1,0 +1,56 @@
+<html>
+<h1><center>mukbang</center></h1> 
+
+<p>New Username</p>
+<input type=text id="newname">
+<button onclick="updateName()">Update</button>
+    
+<br>
+<p>New Profile Picutre (URL)</p>
+<input type=text id="newpp">
+<button onclick="updatePic()">Update</button>
+    
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>       
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyATVwUe0v8F2V1zPaDbrLdbYl3I8dr6kNg",
+    authDomain: "mukbang-a3f89.firebaseapp.com",
+    databaseURL: "https://mukbang-a3f89.firebaseio.com",
+    projectId: "mukbang-a3f89",
+    storageBucket: "mukbang-a3f89.appspot.com",
+    messagingSenderId: "372543879678"
+  };
+
+ firebase.initializeApp(config);
+    
+ 
+   
+    
+    // Check to see if you are logged in
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user == null) {
+                alert("Not logged in.");
+                return;
+            } else {
+                userId = user.uid;
+            }
+            
+        
+        });  
+   function updateName() {
+       var name2 = document.getElementById(newname).value;
+       firebase.database().ref('users/' + userId).update({newname:name2});
+   }
+    
+    function updatePic(){
+        var pic2 = document.getElementById("newpp").value;
+        firebase.database().ref('users/' + userId).update({profile_picture:pic2});
+    }
+  </script>
+
+
+</html>
