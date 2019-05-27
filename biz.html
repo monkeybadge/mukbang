@@ -513,9 +513,16 @@ button[class*="btn"] {border: 0;}
         padding:10px;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
+          border-radius: 25px;
         /*z-index: -1;
         position: relative;*/
         
+        
+        ad {
+  width: 33.3333%;
+            right: 0;
+  margin-right: -15px;
+}
 
         
     }
@@ -943,6 +950,10 @@ function closeNav() {
   <center><button class="btn-gradient red mini" onclick="signout()">Log Out</button></center> 
         
         
+     <div id="ad">
+              <iframe src="ad.png"></iframe>
+                    
+        
         
         
       <form>
@@ -959,9 +970,8 @@ function closeNav() {
         <br><h2>Video Link:<h2>
        <center><input placeholder="YouTube Link" class=input id="vidFileID" type="text"/></center>
  
-         
-    
-     
+         </form>
+
         <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
     
        
