@@ -1,22 +1,15 @@
 
 <html>
-    
-    
-    
-<h1><center>Mukbang</center></h1> 
-<h3><center>Business</center></h3>
-    
-
 
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
     
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <style>
-        
-       #pfp{
+         #pfp{
             border-radius: 70%;
             border: 1px solid red;
             width: 40px;
@@ -732,69 +725,91 @@ background-color: 	#FFA07A;
         color:#FFA07A;
         font-size:20;
     }
-</style>
-
-        
-        
-        
-        
     </style>
+    <script>
         
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyATVwUe0v8F2V1zPaDbrLdbYl3I8dr6kNg",
-    authDomain: "mukbang-a3f89.firebaseapp.com",
-    databaseURL: "https://mukbang-a3f89.firebaseio.com",
-    projectId: "mukbang-a3f89",
-    storageBucket: "mukbang-a3f89.appspot.com",
-    messagingSenderId: "372543879678"
-  };
-  firebase.initializeApp(config);
-    
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCLg_5JJfOefA0yaflqKt6NqDIncUrHzbw",
+            authDomain: "test-21ce7.firebaseapp.com",
+            databaseURL: "https://test-21ce7.firebaseio.com",
+            projectId: "test-21ce7",
+            storageBucket: "test-21ce7.appspot.com",
+            messagingSenderId: "741408477305"
+        };
+        
+
+
+        firebase.initializeApp(config);
+                
         // Check to see if you are logged in
         firebase.auth().onAuthStateChanged(function(user) {
             if (user == null) {
                 alert("Not logged in.");
+                
+        
+                
                 return;
+                
             } else {
                 userId = user.uid;
                 name = user.displayName;
                 imageUrl = user.photoURL;
-                
                 email = user.email;
+
                     
                 // write user data to users
                 writeUserData(userId, name, email, imageUrl);
                 
                 // write data to document
-                mydiv = document.getElementById("mydata");
-                mydiv.innerHTML = name
+                //mydiv = document.getElementById("mydata");
+                //mydiv.innerHTML = name;
+                
+                //myphotodiv = document.getElementById("invis");
+                //myphotodiv.style.visibility="visible";
+                // write user data to users
                 myphotodiv = document.getElementById("myphoto");
-                myphotodiv.innerHTML = "<img id='pfp' src='" + imageUrl + "'/>";
+                myphotodiv.innerHTML = "<img id='profilepic' onmouseover='showPic()' src='" + imageUrl + "'style='max-width:50px; max-height:50px; display:inline-block; padding-bottom: 0px; z-index:-1;'/>";
+                
+                photodiv = document.getElementById("modalphoto");
+                var modalcontent = "<center><p class='modaltext'>" + name + "</p><img id='profilepic' src='" + imageUrl + "'style='max-height:300px; border-radius: 10px'></center>";
+                photodiv.innerHTML = modalcontent;
+                
+                showProf();
+                
+                /*userprof = document.getElementById("prof");
+                var p = "<center><img height='20%' src='" + imageUrl + "'><br><h2>Username: " + name + "</h2></center>";
+                userprof.innerHTML = p;
+                
+                colL = document.getElementById("left");
+                var l = "<h3 style='margin-left: 30px;'>Email: " + user.email + "</h3><h3 style='margin-left: 30px;'>Email: " + user.email + "</h3>";
+                colL.innerHTML = l;
+                
+                colR = document.getElementById("right");
+                var r = "<h3 style='margin-left: 30px;'>Email: " + user.email + "</h3>";
+                colR.innerHTML = r;*/
 
-               firebase.database().ref('/tweets').once('value').then(function(snapshot) {
+                firebase.database().ref('/users').once('value').then(function(snapshot) {
                     var data = (snapshot.val());
                     if (data == null) {
-                      console.log("No data found at /tweets/" + userId);  
+                      console.log("No data found at /users/" + userId);  
                     } else {
                         
-                      firebase.database().ref('/users').once('value').then(function(snapshot) { 
                         var userdata = (snapshot.val());
                         if (userdata != null) {
                            dataarray = [data,userdata]
                            console.log(dataarray)
-                           updatetweets(dataarray); 
+                           //updatetweets(dataarray); 
+                           //showUsers(dataarray);
+                            updateModal(dataarray);
                         }
-                      });
                       //console.log(data)
                       //updatetweets(data);
                     }
                 });
             } // end user null check
         }); // end check auth state
-       
+        
         function encodeImageFileAsURL() {
 
             var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -806,9 +821,10 @@ background-color: 	#FFA07A;
                     //var newImage = document.createElement('img');
                     //newImage.src = srcData;
                     //document.getElementById("imgTest").innerHTML = newImage.outerHTML;
-                    document.getElementById("imgTest").innerHTML = srcData;
+                    document.getElementById("chosenImg").innerHTML = srcData;
+                    //document.getElementById("chosenImg").style.display = "block";
                     //console.log("Converted Base64 version is: " + document.getElementById("imgTest").innerHTML);
-                    console.log(srcData);
+                    //console.log(srcData);
                 }
                 fileReader.readAsDataURL(fileToLoad);
             }
@@ -816,87 +832,139 @@ background-color: 	#FFA07A;
         
         // write user data
         function writeUserData(userId, name, email, imageUrl) {
-            firebase.database().ref('users/' + userId).set({
+            firebase.database().ref('users/' + userId).update({
                 username: name,
                 email: email,
-                profile_picture : imageUrl 
+                profile_picture : imageUrl,
+                userId: userId
             });
         }
         
-        function updatetweets(data) {
-            //var mylist = "<ul>";
-            var mytab = "<table>";
-             var newVidFile = "";
-            users = data[1]; // put on top, because changed data - not good coding change later
-            data = data[0];
+        function showProf() {
             
+            var yourUsername = "";
+            var yourPic = "";
+            var yourAge = "";
+            var yourBio = "";
+            var yourEmail = "";
+            var yourName = "";
+            var yourFav = "";
+            var yourRecent = "";
             
-        
-            for (var u in data) {
-                for (var t in data[u]) {
-                    mytab = mytab + "<tr>";
-                    var date = new Date(data[u][t].time);
-                    var time = date.toString();
-                   if(data[u][t].local == "biz"){ 
-                   if (data[u][t].img != null && data[u][t].img != "") {
-                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
-                        mytab = mytab + "<td><img class = 'zoom' src='" + data[u][t].img + "' width=200px' ></td>";
-                        mytab = mytab + "<td>"+ time + "</td>";
-                    } else if (data[u][t].vid != null && data[u][t].vid != ""){
-                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
-                        /*mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";*/
-                        mytab = mytab + "<td class = 'txtbox width = 100%'> <iframe width=' 'src='" + data[u][t].vid + "'frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe> <br>" + data[u][t].tweet + "</td>";
-                        mytab = mytab + "<td>" + time + "</td>";   
-                        
-                    } else{
-                         mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
-                        mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";
-                        mytab = mytab + "<td>" + time + "</td>";
+            firebase.database().ref('/users').once('value').then(function(snapshot) { 
+                var userdata = (snapshot.val());
+                    dataarray = [userdata]
+                    console.log(dataarray);
+                    users = dataarray[0];
+                
+                    for (var u in users) {
+                        if (users[u].userId == userId) {
+                            
+                            yourName = users[u].newName;
+                            
+                            if (users[u].newName != null) {
+                                yourUsername = users[u].newName;
+                            } 
+                            else {
+                                yourUsername = users[u].username;
+                            }
+    
+                            if (users[u].newPic != null) {
+                                yourPic = users[u].newPic;
+                            }
+                            else {
+                                yourPic = users[u].profile_picture;
+                            }
+                            
+                            if (users[u].email != null) {
+                                yourEmail = users[u].email;
+                            }
+                            
+                            if (users[u].favorite_sport != null) {
+                                yourBio = users[u].favorite_sport;
+                            }
+                            else{
+                                yourBio = "N/A"
+                            }
+                            
+                            if (users[u].team != null) {
+                                yourAge = users[u].team;
+                            }
+                            else{
+                                yourAge = "N/A"
+                            }
+                            
+                            if (users[u].book != null) {
+                                yourFav = users[u].book;
+                            }
+                            else{
+                                yourFav = "N/A"
+                            }
+                            
+                            if (users[u].recent != null) {
+                                yourRecent = users[u].recent;
+                            }
+                            else{
+                                yourRecent = "N/A"
+                            }
+                            
+                            userprof = document.getElementById("prof");
+                            var p = "<center><img height='20%' src='" + yourPic + "'><br><h2>" + yourName + "</h2></center>";
+                            userprof.innerHTML = p;
+                            
+                            lprof = document.getElementById("left");
+                            var l = "<h3>Email: " + yourEmail + "</h3><h3>Favorite Team/Player: " + yourAge + "</h3><h3>Username: " + yourUsername + "</h3><h3>Favorite Sport: " + yourBio + "</h3>";
+                            lprof.innerHTML = l; 
+                            
+//                            rprof = document.getElementById("right");
+//                            var r = "<h3>Username: " + yourUsername + "</h3><h3 style='margin-left: 30px;'>Favorite Sport: " + yourBio + "</h3>";
+//                            rprof.innerHTML = r; 
+                        }
                     }
-                   }
-                    mytab = mytab + "</tr>";
-                }   
-            }
-            //mylist = mylist + "</ul>";
-            mytab = mytab + "</table>"
-            var mytdiv = document.getElementById("mytweets");
-            //mytdiv.innerHTML = mylist;
-            mytdiv.innerHTML = mytab;
+                
+                
+            });
         }
         
-        // write tweets to firebase
-        function tweet() {
-            
-            var twitdoc = document.getElementById("twit");
-            var twitimg = document.getElementById("imgTest");
-            var pstvid = document.getElementById("vidFileID");
-            var nameValue = twitdoc.value;
-            var imgValue = twitimg.innerHTML;
-            var js_time = Date.now();
-            var tweetid = firebase.database().ref('tweets/' + userId + "/").push({tweet: nameValue, time: js_time, img: imgValue, local: "biz"});
-            twitdoc.value = "";
-            console.log("tweet written")
-            
-            firebase.database().ref('/tweets').once('value').then(function(snapshot) {
-                    var data = (snapshot.val());
-                    if (data == null) {
-                      console.log("No data found at /tweets/" + userId);  
-                    } else { 
-                        firebase.database().ref('/users').once('value').then(function(snapshot) { 
-                        var userdata = (snapshot.val());
-                        if (userdata != null) {
-                           dataarray = [data,userdata]
-                           console.log(dataarray)
-                           updatetweets(dataarray); 
-                        }
-                      });
-                    }
+        
+        function chgPic() {
+            var newPic = document.getElementById("chosenImg").innerHTML;
+            firebase.database().ref('users/' + userId).update({
+                profile_picture2: newPic
+            });
+            alert("Successfully Updated Picture");
+        }
+        
+        function chgAge() {
+            var newTeam = document.getElementById("newage").value;
+            //alert(document.getElementById("newage").value);
+            if (newTeam.length > 30) {
+                alert("Your bio cannot be longer than 30 characters");
+            } 
+            else {
+                firebase.database().ref('users/' + userId).update({
+                    team: newTeam
                 });
-            
-            
-            
-            // The unique key stored in tweetid is based on a timestamp, so list items will automatically be ordered chronologically. Because Firebase generates a unique key for each tweet, no write conflicts will occur if multiple users add a post at the same time. https://firebase.google.com/docs/database/admin/save-data
-            
+                alert("Successfully Updated Team/Player"); 
+            }
+            showProf();
+        }
+        
+        
+        
+        function chgRec() {
+            var newrecent = document.getElementById("recent").value;
+            //alert(document.getElementById("recent").value);
+            if (newrecent.length > 30) {
+                alert("The title cannot be longer than 30 characters");
+            } 
+            else {
+                firebase.database().ref('users/' + userId).update({
+                    recent: newrecent
+                });
+                alert("Successfully Updated Most Recent Book"); 
+            }
+            showProf();
         }
         
         function signin() {
@@ -909,75 +977,269 @@ background-color: 	#FFA07A;
         
         function signout() {
             console.log("Signing out");
-            firebase.auth().signOut().then(function() {
+            firebase.auth().signOut().then(function(result) {
             });
         }
+        
+        function profile() {
+          location.replace("https://y10-social-media.github.io/sport-report/profile.html")
+        }
+        
+        function openProfile(){
+            closebtn = document.getElementById("closebtn");
+            closebtn.innerHTML = "<button onclick='closeProfile()'>---</button>";
+            tweets = document.getElementById("mytweets");
+            tweets.style.display = "block";
+        }
+        
+        function closeProfile(){
+            closebtn = document.getElementById("closebtn");
+            closebtn.innerHTML = "<button onclick='openProfile()'>+++</button>";
+            tweets = document.getElementById("mytweets");
+            tweets.style.display = "none";
+        }
+        
+        function showPic(){
+            pic = document.getElementById("profilepic");
+            
+        }
 
-    function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
+        function makeCyan(str){
+            var k = document.getElementById(str);
+            str.style.color = "cyan";
+        }
+        
+        function makeWhite(str){
+            var k = document.getElementById(str);
+            str.style.color = "white";
+        }
+        
+        function openModal(){
+            var modal = document.getElementById('myModal');
+            modal.style.display = "block";
+        }
+        
+        function closeModal(){
+            var modal = document.getElementById('myModal');
+            modal.style.display = "none";
+            photodiv = document.getElementById("modalphoto");
+        }
+        
+        function updateModal(data){
+            users = data[1];
+            data = data[0];
+            photodiv = document.getElementById("modalphoto");
+            var modalcontent = "<center><p class='modaltext'>" + name + "</p><img id='profilepic' src='" + imageUrl + "'style='max-height:300px; border-radius: 10px'><p class='modaltext'></p></center>";
+            var yourUsername = "";
+            var yourPic = "";
+            var yourAge = "";
+            var yourBio = "";
+            var yourEmail = "";
+            var yourName = "";
+            var yourFav = "";
+            var yourRecent = "";
+            
+            var updated = false;
+            
+            for (var u in data) {
+                
+                if (users[u].userId = userId && !updated){
+                    
+                    updated = true;
+                    
+                    if (users[u].newName != null) {
+                        yourUsername = users[u].newName;
+                    } 
+                    else {
+                        yourUsername = users[u].username;
+                    }
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}  
+                    if (users[u].newPic != null) {
+                        yourPic = users[u].newPic;
+                    }
+                    else {
+                        yourPic = users[u].profile_picture;
+                    }
 
-    
+                    if (users[u].email != null) {
+                        yourEmail = users[u].email;
+                    }
+
+                    if (users[u].favorite_sport != null) {
+                        yourBio = users[u].favorite_sport;
+                    }
+                    else{
+                        yourBio = "N/A"
+                    }
+
+                    if (users[u].team != null) {
+                        yourAge = users[u].team;
+                    }
+                    else{
+                        yourAge = "N/A"
+                    }
+
+                    if (users[u].book != null) {
+                        yourFav = users[u].book;
+                    }
+                    else{
+                        yourFav = "N/A"
+                    }
+
+                    if (users[u].recent != null) {
+                        yourRecent = users[u].recent;
+                    }
+                    else{
+                        yourRecent = "N/A"
+                    }
+                    
+                    modalcontent = modalcontent + "<center><p class='modaltext'>Username: " + yourUsername + "<br>Bio: " + yourBio + "<br>Favorite Team: " + yourAge + "<br>Favourite Book: " + yourFav + "<br>Most Recent Read: " + yourRecent + "</p></center>";
+                    photodiv.innerHTML = modalcontent;
+                    
+                }
+                
+            }
+            
+        }
+        
+        function uNameChg() {
+            
+            var uNameOK = true;
+            var newUsername = document.getElementById("newname").value;
+            
+            firebase.database().ref('/users').once('value').then(function(snapshot) { 
+                var userdata = (snapshot.val());
+                    dataarray = [userdata]
+                    console.log(dataarray);
+                    users = dataarray[0];
+                
+                for (var u in users) {
+                    if (newUsername == users[u].username || newUsername == users[u].newName) {
+                        uNameOK = false;
+                    }
+                    if (users[u].profile_picture2 != null) {
+                         infoPic = users[u].profile_picture2;
+                    } else {
+                        infoPic = users[u].profile_picture;
+                      }
+                }
+                
+                for (i = 0; i < newUsername.length; i++) {
+                    if (newUsername.substring(i, i+1) == " ") {
+                        uNameOK = false;
+                    }
+                }
+                
+                if (!uNameOK) {
+                    alert("Your username either contains spaces or someone else has already claimed that username");
+                }
+                
+                else {
+                
+                    if (newUsername.length > 17) {
+                        alert("Your username cannot be longer than 17 characters");
+                    }
+                    else {
+                        
+                        firebase.database().ref('users/' + userId).update({
+                            newName: newUsername
+                        });
+
+                        alert("Successfully Updated Username");
+                    }
+               
+                }
+                    
+            });
+            
+            showProf();
+            
+        }
+        
+        function profile() {
+          location.replace("profile.html")
+        }
+        
     </script>
 
     <body>
-    <center>
-        
-        <i style="absolute-right" id="inputFileToLoad"></i>
-        <i style="absolute-right" id="newname"></i>
-        
-        <center><button class="btn-gradient red mini" onclick="signin()">Log In</button></center> 
-  <center><button class="btn-gradient red mini" onclick="signout()">Log Out</button></center> 
-      <form>
-          
-          
-          
-     
-    
-       
-            <textarea id="twit" background-color="lightCoral" type="text" name="thetweet" cols="100" rows="4"></textarea>
-       
-        <br>
-       
-         <br>Image:
-        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
-        <div id="imgTest" style="display:none;"></div>
-        
-       <center><input placeholder="YouTube Link" class=input id="vidFileID" type="text"/></center>
- 
-         </form>
-
-    
-     
-        <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
-    
-       
-        
-        
-        
-    <div id="imgTest" style="display:none;"></div>   
-    <div  id="mytweets"></div>
-    <div id="mydata"></div>
- 
         
         <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="tos.html"><h2>Terms of Service</h2></a>
   <a href="AboutUsPage.html"><h2>Team</h2></a>
   <a href="General.html"><h2>General</h2></a>
-<a href="Settings.html"><h2>Settings</h2></a>
+<a href="Profile.html"><h2>Profile</h2></a>
 <a href="index.html"><h2>Homepage1</h2></a>
 </div>
-
-
-<span style= "font-size:75px;cursor:pointer;position:absolute;left: 75; position:absolute;margin-right:50 absolute;top: 25" a onclick="openNav()">&#9776;</span>
+      
         
         
-        </center>
+     
+          <div class="nav-right">
+            <div id="myphoto" onclick="profile()"></div>
+            <div id="mydata" onclick="profile()"></div>
+              <button class="btn-gradient red mini" onclick="signin()">Log In</button>
+              <button class="btn-gradient red mini" onclick="signout()">Log out</button>
+        </div>
+        </div>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <div id="prof">
+        
+            <center>
+                <div class='loader'></div>
+                <br>
+                <h3>Loading Profile...</h3>
+            </center>
+            
+        </div>
+        
+        
+        
+        <center><table>
+        <tr>
+        <td>
+            <div id="changeprof">
+        
+            <h2>Edit Profile:</h2>
+            
+            <h4>New Username:</h4>
+            <input type="text" id="newname"  placeholder="Enter New Username..">
+            <button onclick="uNameChg()" class="newprofbtn">Submit</button>
+            
+          
+    
+            <br><br>
+            
+            <h4>New Profile Image:</h4>
+            <input class="custom-file-input" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+            <button onclick="chgPic()" class="newprofbtn">Submit</button>
+            <div id="chosenImg" style="display:none;"></div>
+            
+        
+        </div>
+            </td>
+            <td>
+        <div class="row">
+          <div class="column" id="left"></div>
+        </div>
+                </td>
+            </tr>
+        </table></center>
+    
+        <div id="myModal" class="modal">
+
+          
+        
+        
     </body>
 
     
