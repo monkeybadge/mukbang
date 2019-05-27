@@ -3,9 +3,11 @@
     
     
     
-<h1><center>mukbang</center></h1> 
-<h3><center>Entertainment</center></h3>
+<h1><center>Mukbang</center></h1> 
+<h3><center>Business</center></h3>
     
+    
+<title>Business</title>
 
 
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
@@ -16,6 +18,66 @@
     
     <style>
         
+        
+        
+        
+        table.GeneratedTable {
+            float: left;
+            vertical-align: middle;
+
+  width: ;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 1px;
+  border-color: #ff4500;
+  border-style: solid;
+  color: #000000;
+ border-spacing: 15px
+
+}
+
+
+
+table.GeneratedTable thead {
+  background-color: #ff3100;
+}
+        
+        
+        
+        
+        
+        h1 {
+font-size: 80px;
+}
+        inform{
+            float: center;
+           display: inline-block;
+        background-color: azure;
+        width:300px;
+        padding:10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+         
+            
+            
+            
+        }
+        
+        myphoto{
+            float: right;
+            
+            
+        }
+        
+       #pfp{
+            border-radius: 70%;
+            border: 1px solid red;
+            width: 40px;
+        }
+         
+            
+            
+        }
         #photourl{
             
             width: 
@@ -23,12 +85,45 @@
         
        <span style="font-family:Arial">tex</span> 
         
-
-        .avatar {
-  vertical-align: middle;
-  width: 50px;
-  height: 50px;
+        
+        .twit { 
+            border-radius: 25px;
+        background-color:darkkhaki
+        
+        
+        
+        }
+        .Tdiv{
+            background-color: palevioletred
+            
+            
+            
+            
+        }
+ .avatar {
+  
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  padding: 0px;
+
+}
+
+.avatar:hover {
+    filter: brightness(0.5);
+}
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+        
+        .close1:hover,
+.close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+} 
+  #post:hover{
+    filter:brightness(0.5);
 }
  * {
     box-sizing: border-box;
@@ -116,6 +211,7 @@ pre .val {color: #e6db74;} /* value */
 }
 .btn-gradient {
     margin: 5px;
+   float:left;
 }
 a[class*="btn"] {text-decoration: none;}
 input[class*="btn"], 
@@ -141,6 +237,8 @@ button[class*="btn"] {border: 0;}
 .btn-effect.mini {
   padding: 4px 12px;  
   font-size: 12px;
+
+    
 }
 .btn.block, 
 .btn-two.block, 
@@ -201,7 +299,7 @@ button[class*="btn"] {border: 0;}
 .btn.yellow {box-shadow:0px 4px 0px #D1B757;}
 .btn.yellow:active {box-shadow: 0 0 #ff4c4b; background-color: #D6BB59;}
 
-/* Button two - I have no creativity for names */
+
 .btn-two {
     color: white;   
     padding: 15px 25px;
@@ -457,13 +555,311 @@ button[class*="btn"] {border: 0;}
   .sidenav a {font-size: 18px;}
 }
     
+    body{
+        margin-left:30px;
+        font-family:Verdana;
+    }   
+    .txtbox{
+        width:50%;
+
     
+    }
+    form{
+        position:relative;
+        float: center;
+        margin: auto;
+        
+     vertical-align: top;
+        background-color: indianred;
+        width:700px;
+        padding:100px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+          border-radius: 25px;
+        /*z-index: -1;
+        position: relative;*/
+        
+        
+        ad {
+            width: 160px;
+  height: 600px;
+            
+  width: 33.3333%;
+            right: 0;
+  
+}
+
+        
+    }
+    form{
+        margin-top:-5px;
+        padding-top:15px;
+        margin-bottom:60px;
+    }
+    h4{
+        font-weight: 500;
+        font-size:20;
+        background-color: #FFA07A;
+        color:white;
+        padding:15px;
+        margin:0px;
+                width:615px;
+        z-index: 1;
+        
+         border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+    }
+   
+        
+    }
+    #post{
+         background-color: #FFA07A;
+          border: none;
+          color: white;
+          height:50px;
+          width:150px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 25px;
+        border-radius: 12px;
+    }
+    #post:hover{
+    filter:brightness(0.5);
+}
+    #title{
+        font-size:30;
+        font-style:italic;
+    }
+
+banner{
+    height: 90px;
+    background:white;
+    width:100%;
+    top:0px;
+    color:white;
+    font-size: 150%;
+    left:0px;
+    position: relative;
+
+    
+    
+
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color : black;
+}
+.modal-content1 {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color : black;
+
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile{
+background-color: 	#FFA07A;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  width:80px;
+  height: 55px;
+  left:60%;
+  top:-25px;
+    text-align: center;
+    
+}
+
+.profile:hover{
+    filter:brightness(0.5);
+}
+    html{
+    background-color:F2F2F2;
+    margin:0;
+    padding:0;
+    height:1000px;
+}
+    .button1{border-radius: 12px;}
+
+banner{
+    height: 90px;
+    background:white;
+    width:100%;
+    z-index: 10;
+    position: fixed;
+    top:0px;
+    color:white;
+    font-size: 150%;
+    left:0px;
+    
+    
+
+}
+#logo{
+    margin-top:14px;
+    
+}
+body{
+    
+    top:100px;
+    position:relative;
+}
+    td{
+        height:75px;
+    }
+
+.avatar {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 0px;
+
+}
+
+.avatar:hover {
+    filter: brightness(0.5);
+}
+.zoom {
+  transition: transform .25s; /* Animation */
+  background-color: white;
+    border-radius: 15px
+}
+    
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.txtbox {
+    padding: 5px;
+    background-color:white;
+    align-content: center;
+    border-radius: 25px;
+    font-size:20;
+}
+
+
+.close1 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.game{
+background-color: 	#FFA07A;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  width:80px;
+  height: 55px;
+  left:60%;
+  top:-25px;
+    text-align: center;
+    
+}
+
+.game:hover{
+    filter:brightness(0.5);
+}
+    html{
+    background-color:F2F2F2;
+    margin:0;
+    padding:0;
+}
+
+    a{
+        text-decoration: none;
+        color:#FFA07A;
+        font-size:20;
+    }
+        h10 {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: 92px;
+  padding: 80px 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+        
+        
+        
+        elegantshadow {
+    color: #131313;
+    background-color: #e7e5e4;
+    letter-spacing: .15em;
+    text-shadow: 
+      1px -1px 0 #767676, 
+      -1px 2px 1px #737272, 
+      -2px 4px 1px #767474, 
+      -3px 6px 1px #787777, 
+      -4px 8px 1px #7b7a7a, 
+      -5px 10px 1px #7f7d7d, 
+      -6px 12px 1px #828181, 
+      -7px 14px 1px #868585, 
+      -8px 16px 1px #8b8a89, 
+      -9px 18px 1px #8f8e8d, 
+      -10px 20px 1px #949392, 
+      -11px 22px 1px #999897, 
+      -12px 24px 1px #9e9c9c, 
+      -13px 26px 1px #a3a1a1, 
+      -14px 28px 1px #a8a6a6, 
+      -15px 30px 1px #adabab, 
+      -16px 32px 1px #b2b1b0, 
+      -17px 34px 1px #b7b6b5, 
+      -18px 36px 1px #bcbbba, 
+      -19px 38px 1px #c1bfbf, 
+      -20px 40px 1px #c6c4c4, 
+      -21px 42px 1px #cbc9c8, 
+      -22px 44px 1px #cfcdcd, 
+      -23px 46px 1px #d4d2d1, 
+      -24px 48px 1px #d8d6d5, 
+      -25px 50px 1px #dbdad9, 
+      -26px 52px 1px #dfdddc, 
+      -27px 54px 1px #e2e0df, 
+      -28px 56px 1px #e4e3e2;
+  }
+  &.
+</style>
 
         
         
         
-        
-    </style>
+
         
 <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 <script>
@@ -497,9 +893,10 @@ button[class*="btn"] {border: 0;}
                 mydiv = document.getElementById("mydata");
                 mydiv.innerHTML = name
                 myphotodiv = document.getElementById("myphoto");
-                myphotodiv.innerHTML = "<img src='" + imageUrl  + "'/> ";
+                
+                myphotodiv.innerHTML = "<img id='pfp' src='" + imageUrl + "'/>";
 
-                firebase.database().ref('/tweets').once('value').then(function(snapshot) {
+               firebase.database().ref('/tweets').once('value').then(function(snapshot) {
                     var data = (snapshot.val());
                     if (data == null) {
                       console.log("No data found at /tweets/" + userId);  
@@ -519,7 +916,7 @@ button[class*="btn"] {border: 0;}
                 });
             } // end user null check
         }); // end check auth state
-        
+       
         function encodeImageFileAsURL() {
 
             var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -551,29 +948,37 @@ button[class*="btn"] {border: 0;}
         function updatetweets(data) {
             //var mylist = "<ul>";
             var mytab = "<table>";
+             var newVidFile = "";
             users = data[1]; // put on top, because changed data - not good coding change later
             data = data[0];
             
+            
+        
             for (var u in data) {
                 for (var t in data[u]) {
                     mytab = mytab + "<tr>";
                     var date = new Date(data[u][t].time);
                     var time = date.toString();
-                    
-                    if(data[u][t].local == "ent"){
-                       if (data[u][t].img != "") {
-                            mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' + height='40px'></td>";
-                            mytab = mytab + "<td>" + users[u].email + "</td>";
-                            mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
-                            mytab = mytab + "<td>" + time + "<br><img src='" + data[u][t].img + "' width='75px'></td>";
-                        } else {
-                            mytab = mytab + "<td><img src='" + users[u].profile_picture + "' width='50px' + border-style: solid></td>";
-                            mytab = mytab + "<td>" + users[u].email + "</td>";
-                            mytab = mytab + "<td>" + data[u][t].tweet + "</td>";
-                            mytab = mytab + "<td>" + time + "</td>";
-                        }
+                   if(data[u][t].local == "ent"){ 
+                   if (data[u][t].img != null && data[u][t].img != "") {
+                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        mytab = mytab + "<td><img class = 'zoom' src='" + data[u][t].img + "' width=200px' ></td>";
+                        mytab = mytab + "<td>"+ time + "</td>";
+                       mytab = mytab + "<td> <button id= " + u + " class='btn-gradient red mini' type='button' onclick='click(" + u +")'>View Profile</button>"
+                    } else if (data[u][t].vid != null && data[u][t].vid != ""){
+                        mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        /*mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";*/
+                        mytab = mytab + "<td class = 'txtbox width = 100%'> <iframe width=' 'src='" + data[u][t].vid + "'frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe> <br>" + data[u][t].tweet + "</td>";
+                        mytab = mytab + "<td>" + time + "</td>"; 
+                        mytab = mytab + "<td> <button id= " + u + " class='btn-gradient red mini' type='button' onclick='click(" + u +")'>View Profile</button>"
                         
-                    } 
+                    } else{
+                         mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
+                        mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";
+                        mytab = mytab + "<td>" + time + "</td>";
+                        mytab = mytab + "<td> <button id= " + u + " class='btn-gradient red mini' type='button' onclick='click(" + u +")'>View Profile</button>"
+                    }
+                   }
                     mytab = mytab + "</tr>";
                 }   
             }
@@ -584,11 +989,17 @@ button[class*="btn"] {border: 0;}
             mytdiv.innerHTML = mytab;
         }
         
-        // write tweets to firebase
+ 
+         function click(x){
+            console.log(x);
+            window.open("http://localhost:8000/profile.html?un=" + x);
+        }
+    
         function tweet() {
             
             var twitdoc = document.getElementById("twit");
             var twitimg = document.getElementById("imgTest");
+            var pstvid = document.getElementById("vidFileID");
             var nameValue = twitdoc.value;
             var imgValue = twitimg.innerHTML;
             var js_time = Date.now();
@@ -645,37 +1056,82 @@ function closeNav() {
 
     <body>
     <center>
-        <button class="btn-gradient red mini" onclick="signin()">Sign in</button>
-        <button class="btn-gradient red mini" onclick="signout()">Sign out</button>
+        
+        <i  id="myphoto"></i>
+
+        
+        
+        
+        <center><button class="btn-gradient red mini" onclick="signin()">Log In</button></center> 
+  <center><button class="btn-gradient red mini" onclick="signout()">Log Out</button></center> 
+        
+        
+     
+             
+                    
+        <img style="width: 250px; background-color: #999; z-index: 10; position: fixed; right: 20px; top: 75px; height: 600px;" src="ad.png" alt="ad">
+        
+
     
-        <form>
-            Tweet:<br>
-            <textarea id="twit" type="text" name="thetweet" cols="100" rows="4"></textarea>
-        </form> 
-        <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
+        
+        
+      <form>
+          
     
-        <br><input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" width = 50px/>
+       Tweet:<br>
+           <textarea style=" border-radius: 25px;"id="twit" type="text" name="thetweet" cols="80" rows="4"></textarea>
+            
+       
+      <br>
+        <br>
+       <br>
+         <inform><br>Image:<br>
+          
+        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+          </inform>
+          <br>
+          <br>
+          <br>
+          
+          
+        <inform><br>Video Link:
+          
+       <center><input placeholder="YouTube Link" class=input id="vidFileID" type="text"/></center>
+ 
+          </inform>
+
+      <br>  <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
+    
+       </form>
+       
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         
         
-        
-    <div id="imgTest" style="display:none;"></div>   
-    <div  id="mytweets"></div>
-    <div id="mydata"></div>
-    <div id="myphoto" width = 50px></div>
+   
+ 
+ 
         
         <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="TOS.html"><h2>Terms of Service</h2></a>
-  <a href="AboutUsPage.html"><h2>Team</h2></a>
-  <a href="HowToPlay.html"><h2>How to Use</h2></a>
-    <a href="Homepage.html"><h2>Homepage</h2></a>
+  <a href="index.html"><h2>Homepage</h2></a>
+  <a href="settings.html"><h2>Settings</h2></a>
+  <a href="profile.html"><h2>Profiles</h2></a>
 </div>
 
 
 <span style= "font-size:75px;cursor:pointer;position:absolute;left: 75; position:absolute;margin-right:50 absolute;top: 25" a onclick="openNav()">&#9776;</span>
         
         
-        </center>
+          <Center> <div style="position:relative;" id="mytweets"></div></Center> 
+                    <div id="mydata"></div>
+        
+        
+        
+        
     </body>
 
     

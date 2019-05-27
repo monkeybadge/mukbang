@@ -964,16 +964,19 @@ background-color: 	#FFA07A;
                         mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
                         mytab = mytab + "<td><img class = 'zoom' src='" + data[u][t].img + "' width=200px' ></td>";
                         mytab = mytab + "<td>"+ time + "</td>";
+                       mytab = mytab + "<td> <button id= " + u + " class='btn-gradient red mini' type='button' onclick='click(" + u +")'>View Profile</button>"
                     } else if (data[u][t].vid != null && data[u][t].vid != ""){
                         mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
                         /*mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";*/
                         mytab = mytab + "<td class = 'txtbox width = 100%'> <iframe width=' 'src='" + data[u][t].vid + "'frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe> <br>" + data[u][t].tweet + "</td>";
-                        mytab = mytab + "<td>" + time + "</td>";   
+                        mytab = mytab + "<td>" + time + "</td>"; 
+                        mytab = mytab + "<td> <button id= " + u + " class='btn-gradient red mini' type='button' onclick='click(" + u +")'>View Profile</button>"
                         
                     } else{
                          mytab = mytab + "<td><img class = 'avatar' src='" + users[u].profile_picture + "' width='100px'></td>";
                         mytab = mytab + "<td class = 'txtbox width=100%'>" + data[u][t].tweet + "</td>";
                         mytab = mytab + "<td>" + time + "</td>";
+                        mytab = mytab + "<td> <button id= " + u + " class='btn-gradient red mini' type='button' onclick='click(" + u +")'>View Profile</button>"
                     }
                    }
                     mytab = mytab + "</tr>";
@@ -986,7 +989,12 @@ background-color: 	#FFA07A;
             mytdiv.innerHTML = mytab;
         }
         
-        // write tweets to firebase
+ 
+         function click(x){
+            console.log(x);
+            window.open("http://localhost:8000/profile.html?un=" + x);
+        }
+    
         function tweet() {
             
             var twitdoc = document.getElementById("twit");
@@ -1109,11 +1117,9 @@ function closeNav() {
         
         <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="tos.html"><h2>Terms of Service</h2></a>
-  <a href="AboutUsPage.html"><h2>Team</h2></a>
-  <a href="General.html"><h2>General</h2></a>
-<a href="Profile.html"><h2>Profile</h2></a>
-<a href="index.html"><h2>Homepage</h2></a>
+  <a href="index.html"><h2>Homepage</h2></a>
+  <a href="settings.html"><h2>Settings</h2></a>
+  <a href="profile.html"><h2>Profiles</h2></a>
 </div>
 
 
