@@ -242,7 +242,7 @@ button[class*="btn"] {border: 0;}
 .btn.yellow {box-shadow:0px 4px 0px #D1B757;}
 .btn.yellow:active {box-shadow: 0 0 #ff4c4b; background-color: #D6BB59;}
 
-/* Button two - I have no creativity for names */
+
 .btn-two {
     color: white;   
     padding: 15px 25px;
@@ -778,6 +778,7 @@ background-color: 	#FFA07A;
                 mydiv = document.getElementById("mydata");
                 mydiv.innerHTML = name
                 myphotodiv = document.getElementById("myphoto");
+                
                 myphotodiv.innerHTML = "<img id='pfp' src='" + imageUrl + "'/>";
 
                firebase.database().ref('/tweets').once('value').then(function(snapshot) {
@@ -934,6 +935,8 @@ function closeNav() {
     <center>
         
         <i style="absolute-right" id="myphoto"></i>
+        <i style="absolute-right" id="name"></i>
+        
         
         
         <center><button class="btn-gradient red mini" onclick="signin()">Log In</button></center> 
@@ -941,7 +944,7 @@ function closeNav() {
         
         
         
-        <div style:   id="Tdiv">
+        <div  id="Tdiv">
       <form>
           
     
@@ -956,8 +959,7 @@ function closeNav() {
         <br><h2>Video Link:<h2>
        <center><input placeholder="YouTube Link" class=input id="vidFileID" type="text"/></center>
  
-         </form>
-        </div>
+         
     
      
         <button  class="btn-gradient red mini" type="button" onclick="tweet()">Submit</button>
