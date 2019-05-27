@@ -719,6 +719,7 @@ a, a:hover {
 }
 
 #services {
+    grid-auto-rows: 4
     background          : -webkit-linear-gradient(left, #e8432a 0%, #e8432a 100%), -webkit-linear-gradient(left, #e8432a 0%, #e8432a 100%);
     background          : -moz-linear-gradient(left, #e8432a 0%, #e8432a 100%), -moz-linear-gradient(left, #e8432a 0%, #e8432a 100%);
     background          : -o-linear-gradient(left, #e8432a 0%, #e8432a 100%), -o-linear-gradient(left, #e8432a 0%, #e8432a 100%);
