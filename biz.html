@@ -826,6 +826,7 @@ background-color: 	#FFA07A;
         function updatetweets(data) {
             //var mylist = "<ul>";
             var mytab = "<table>";
+             var newVidFile = "";
             users = data[1]; // put on top, because changed data - not good coding change later
             data = data[0];
             
@@ -868,6 +869,7 @@ background-color: 	#FFA07A;
             
             var twitdoc = document.getElementById("twit");
             var twitimg = document.getElementById("imgTest");
+            var pstvid = document.getElementById("vidFileID");
             var nameValue = twitdoc.value;
             var imgValue = twitimg.innerHTML;
             var js_time = Date.now();
@@ -943,11 +945,7 @@ function closeNav() {
         <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
         <div id="imgTest" style="display:none;"></div>
         
-       Video:
-        <input id="vidFileID" type="text"/>
-        <div id="vidTest" style="display:none;"></div>
-        <br>   <br>
-            
+       <center><input placeholder="YouTube Link" class=input id="vidFileID" type="text"/></center>
  
          </form>
         <button class="btn-gradient red mini" onclick="signin()">Sign in</button>
